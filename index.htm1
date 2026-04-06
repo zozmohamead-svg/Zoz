@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتيجة الطلاب 📊</title>
+<style>
+body { font-family: Arial; text-align: center; background: linear-gradient(to bottom,#a0e1ff,#ffffff); padding: 30px; }
+h1 { color:#0066cc; margin-bottom: 20px; }
+input { padding:12px; width:260px; font-size:18px; border-radius:8px; border:1px solid #ccc; }
+button { padding:12px 25px; font-size:18px; background-color:#0066cc; color:white; border:none; border-radius:8px; cursor:pointer; margin-left:10px; }
+button:hover { background-color:#004d99; }
+#result { margin-top:20px; font-size:20px; color:#003366; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<h1>استعلام نتيجة الطالب 📊</h1>
+<input type="number" id="seatNumber" placeholder="اكتب رقم الطالب">
+<button id="showBtn">عرض النتيجة</button>
+<div id="result"></div>
+
+<script>
+document.getElementById("showBtn").addEventListener("click", function() {
+    // بيانات الطلاب الجديدة
+    const students = {
+        "1": {name: "محمد", grade: 200},
+        "2": {name: "حسن", grade: 300},
+        "3": {name: "معاذ", grade: 400}
+    };
+    
+    const seat = document.getElementById("seatNumber").value.trim();
+    const resultDiv = document.getElementById("result");
+    
+    if(seat === "") {
+        resultDiv.innerHTML = "";
+    } else if(students[seat]) {
+        resultDiv.innerHTML = `✅ الاسم: ${students[seat].name}<br>📊 الدرجة: ${students[seat].grade}`;
+    } else {
+        resultDiv.innerHTML = "❌ رقم الطالب غير صحيح";
+    }
+});
+</script>
+
+</body>
+</html>
